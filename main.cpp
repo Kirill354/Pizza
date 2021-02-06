@@ -19,10 +19,12 @@ public:
     virtual void GetPrice() {
         cout <<"Price of " << type << " = " << price << endl;
     }
+    /*
     virtual void Prepare() = 0;
     virtual void Bake() = 0;
     virtual void Cut() = 0;
     virtual void Packaging() = 0;
+    */
 };
 
 class Peperoni : public Pizza {
@@ -71,12 +73,67 @@ public:
     }
 };
 
+void menu(){
+    cout << "Hello, dear guest! What do u prefer? " << endl;
+
+    cout << "\n--OUR ASSORTMENT--" << endl << endl;
+    cout << "#1 Peperoni    - Price is 1000$" << endl;
+    cout << "#2 Four_Cheese - Price is 900$" << endl;
+    cout << "#3 BBQ         - Price is 950$" << endl;
+    cout << "\n--THE END--" << endl << endl;
+
+    cout << "to add peperoni to the order    - enter 1" << endl;
+    cout << "to add four_cheese to the order - enter 2" << endl;
+    cout << "to add BBQ to the order         - enter 3" << endl;
+    cout << "to leave our menu               - enter 0" << endl;
+}
+
+void Order(){
+    vector <Pizza> vect;
+    vect.clear();
+
+    char c;
+
+    do {
+
+        cout <<'\n';
+        menu();
+        cin >> c;
+
+        switch(c){
+
+            case '0':
+                break;
+
+            case '1':
+                
+                break;
+
+            case '2':
+                
+                break;
+
+            case '3':
+                
+                break;
+
+            default:
+                cout << " incorrect number " << endl;
+                break;
+        }
+    }
+    while (c != '0');
+
+}
 
 int main()
 {
-    Peperoni a;
-    a.Prepare();
-    a.GetPrice();
+    //Peperoni a;
+    //a.Prepare();
+    //a.GetPrice();
+
+    Order();
+
  
     return 0;
 }
