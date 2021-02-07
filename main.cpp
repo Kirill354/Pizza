@@ -89,8 +89,8 @@ void menu(){
 }
 
 void Order(){
-    vector <Pizza> vect;
-    vect.clear();
+    vector <Pizza*> vect;
+    //vect.clear();
 
     char c;
 
@@ -106,15 +106,15 @@ void Order(){
                 break;
 
             case '1':
-                
+                vect.push_back(new Peperoni);
                 break;
 
             case '2':
-                
+                vect.push_back(new Four_Cheese);
                 break;
 
             case '3':
-                
+                vect.push_back(new BBQ);
                 break;
 
             default:
@@ -123,6 +123,10 @@ void Order(){
         }
     }
     while (c != '0');
+
+    for (auto a : vect){
+        cout << vect[a].GetPrice;
+    }
 
 }
 
