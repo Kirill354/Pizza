@@ -19,6 +19,9 @@ public:
     virtual void GetPrice() {
         cout <<"Price of " << type << " = " << price << endl;
     }
+    virtual int ReturnPrice() {
+        return price;
+    }
     /*
     virtual void Prepare() = 0;
     virtual void Bake() = 0;
@@ -40,6 +43,10 @@ public:
         cout <<"Price of " << type << " = " << price << endl;
     }
 
+    int ReturnPrice() override {
+        return price;
+    }
+
     void Prepare(){
         cout << type << " is prepared " << endl;
     }
@@ -57,6 +64,9 @@ public:
     void GetPrice() override{
         cout <<"Price of " << type << " = " << price << endl;
     }
+    int ReturnPrice() override {
+        return price;
+    }
 };
 
 class BBQ : public Pizza {
@@ -70,6 +80,9 @@ public:
     
     void GetPrice() override{
         cout <<"Price of " << type << " = " << price << endl;
+    }
+    int ReturnPrice() override {
+        return price;
     }
 };
 
@@ -88,9 +101,7 @@ void menu(){
     cout << "to leave our menu               - enter 0" << endl;
 }
 
-void Order(){
-    vector <Pizza*> vect;
-    //vect.clear();
+void Purchases(vector <Pizza*> &vect) {
 
     char c;
 
@@ -124,8 +135,42 @@ void Order(){
     }
     while (c != '0');
 
+    int summ = 0;
+    cout << '\n';
     for (auto a : vect){
-        cout << vect[a].GetPrice;
+        a->GetPrice();
+        summ += a->ReturnPrice();
+    }
+    cout << "Total order's cost = " << summ << endl;
+    cout << "Do you agree with your order? 1-agree; 2-disagree" << endl;
+}
+
+void Order(){
+    vector <Pizza*> vect;
+    //vect.clear();
+    Purchases(vect);
+
+    int consent = 0;
+
+    while (consent != 1){
+
+        cin >> consent;
+
+        if (consent == 1){
+            // тут будет функция приготовления пицц
+            /*
+            void Prepare();
+            void Bake();
+            void Cut();
+            void Packaging();
+            */
+           cout << "END" << endl;
+           break;
+        }
+        else{
+            Purchases(vect);
+        }
+        
     }
 
 }
